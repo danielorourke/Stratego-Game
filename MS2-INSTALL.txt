@@ -1,0 +1,15 @@
+(FOR INSTALLING VISUAL APPLICATIONS AND THE GRAPHICS OCAML PACKAGE PLEASE
+REFER TO INSTALL.TXT FROM MILESTONE 1)
+
+The only commands the user should have to run is the following:
+"export DISPLAY=:0"
+
+This sets their device's display environment to 0, allowing a graphical
+interface to be displayed when playing this game.
+
+After navigating to this project's directory, the user should then run
+the following command to begin a game:
+"make play"
+
+From there the user is prompted between either placing their own pieces on
+the board, or having pieces placed randomly.

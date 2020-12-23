@@ -1,0 +1,8 @@
+#require "ounit2";;
+#require "graphics";;
+#require "str";;
+#require "ANSITerminal";;
+#directory "_build";;
+#load "board.cmo";;
+Graphics.open_graph " 520x520";;
+#load "gui.cmo";;

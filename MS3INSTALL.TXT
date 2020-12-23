@@ -1,0 +1,72 @@
+
+FOR MAC USERS:
+The user should begin by installing XQuartz for the purpose of viewing 
+the Graphical User Interface, or making sure that they already 
+have the program installed.
+
+The user should then install pkg-config. We recommend using Homebrew for Mac
+and running "brew install pkg-config" in the terminal
+
+Then the user should install the graphics module with "opam install graphics"
+
+The user also has to change the $DISPLAY environment variable on their Mac
+in order to visualize the GUI. This can be performed by running the following 
+command in terminal: 
+export DISPLAY=:0
+
+After this the user can run play a game of Stratego from the CS3110-Stratego
+directory by simply entering the following command:
+"make play" 
+
+Afterwards the user can follow along to the prompts on the screen to play
+a full game. They can also enter "help" at any point if they need help with
+instructions on how to play the game. 
+Finally, they can enter "quit" to leave the game state at any point.
+
+
+FOR WINDOWS WITH UBUNTU LTS:
+
+Installation:
+1. Install the OCaml Graphics module (if not already installed)
+
+You can check to see if the Graphics module is currently installed by typing the following in your terminal:
+
+$ utop
+
+In Utop:
+# #load "graphics.cma"
+
+If this code runs without error, then your Graphics module is installed and ready for use.
+If it returns a message that says "Cannot find graphics.cma", then you will need to install it. 
+
+Installing the Graphics module on Windows can be tricky and may or may not work depending on the method used
+to install. Try this method in your terminal:
+
+$ opam install graphics 
+
+If this does not work, then you will have to use a different method. In our group, each member had unique trouble
+installing this module and encountered different errors. In one specific case, there were a number of dependecies missing
+that prevented Graphics from installing. Dependencies can be found here (https://opam.ocaml.org/packages/graphics/).
+
+2. Install Xming for Windows. (http://www.straightrunning.com/XmingNotes/)
+
+Testing:
+
+1. On your computer, search for the program XLaunch. This is a GUI for Xming that allows for additional configuration.
+Open XLaunch and make sure that the "Multiple Windows" option is selected. Set the Display number to 0 in the bottom left
+corner of the screen. Click Next. Select the option "Start no client" and click Next. On the following screen, click
+Next again without making any changes. On the final screen, click "Save configuration" and store the file in the same 
+directory as your Xming install. Click Finish. 
+
+2. Type the following in your LTS terminal:
+
+$ export DISPLAY=:0
+
+After this the user can run play a game of Stratego from the CS3110-Stratego
+directory by simply entering the following command:
+"make play" 
+
+Afterwards the user can follow along to the prompts on the screen to play
+a full game. They can also enter "help" at any point if they need help with
+instructions on how to play the game. 
+Finally, they can enter "quit" to leave the game state at any point.

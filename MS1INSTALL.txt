@@ -1,0 +1,135 @@
+For Board.cmo
+To build the system run the command "make build"
+To run our OUnit tests you can run the command "make test"
+
+For gui.cmo
+Due to the unique nature of the Graphical User Interface, a typical
+test suite was not sufficient for testing. Instead, testing directly from
+utop is necessary.
+
+For Mac Users:
+Begin by installing XQuartz, or making sure that you already have the program
+installed. Run the application to begin the testing process.
+
+The user should then install pkg-config. We recommend using Homebrew for Mac
+and running "brew install pkg-config" in their terminal
+
+Then the user should install the graphics module with "opam install graphics"
+
+The user also has to change the $DISPLAY environment variable on their Mac
+in order to visualize the GUI. This can be performed by running the following 
+command in terminal: 
+export DISPLAY=:0
+The user should make sure that they have Ocaml downloaded. If that is the case
+then the user should open the top level in order to test the gui. This 
+can be performed by running the following command: utop. Make sure that when
+you open utop you are currently located in the project's directory
+At this point you should run the following command in utop to open the directory: 
+#directory "_build";;
+The next step is to open the Board and Gui modules by running the following two 
+commands sequentially:
+#load "board.cmo";;
+#load "gui.cmo";;
+You can see now that the Gui opens in a 500x500 window.
+From there you can run the following command to create a board with only 
+empty squares:
+Gui.draw_board [|[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|]|];;
+
+To add a piece of type Flag to the user's team, you can run
+the following command:
+let f = Board.piece_of_string true "F";;
+
+You can then include this piece in the first square of the board:
+Gui.draw_board [|[|Some f;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|]|];;
+
+
+For Windows with Ubuntu LTS:
+
+Installation:
+1. Install the OCaml Graphics module (if not already installed)
+
+You can check to see if the Graphics module is currently installed by typing the following in your terminal:
+
+$ utop
+
+In Utop:
+# #load "graphics.cma"
+
+If this code runs without error, then your Graphics module is installed and ready for use.
+If it returns a message that says "Cannot find graphics.cma", then you will need to install it. 
+
+Installing the Graphics module on Windows can be tricky and may or may not work depending on the method used
+to install. Try this method in your terminal:
+
+$ opam install graphics 
+
+If this does not work, then you will have to use a different method. In our group, each member had unique trouble
+installing this module and encountered different errors. In one specific case, there were a number of dependecies missing
+that prevented Graphics from installing. Dependencies can be found here (https://opam.ocaml.org/packages/graphics/).
+
+2. Install Xming for Windows. (http://www.straightrunning.com/XmingNotes/)
+
+Testing:
+
+1. On your computer, search for the program XLaunch. This is a GUI for Xming that allows for additional configuration.
+Open XLaunch and make sure that the "Multiple Windows" option is selected. Set the Display number to 0 in the bottom left
+corner of the screen. Click Next. Select the option "Start no client" and click Next. On the following screen, click
+Next again without making any changes. On the final screen, click "Save configuration" and store the file in the same 
+directory as your Xming install. Click Finish. 
+
+2. Type the following in your LTS terminal:
+
+$ export DISPLAY=:0
+
+3. From your terminal, open Utop by typing:
+
+$ utop
+
+In utop type the following:
+
+# #directory "_build";;
+# #load "board.cmo";;
+# #load "gui.cmo";;
+
+These commands will open an X11 window and load the Board and Gui modules into Utop for testing. 
+
+4. Test Functions
+
+From here, you are able to test any of the functions in the Gui module. As an example, let's draw a blank 2x2 game board.
+In utop, type:
+
+# Gui.draw_board [|[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|];
+[|None;None;None;None;None;None;None;None;None;None|]|];;
+
+You should see a blank 2x2 board in the bottom left corner of the Xming window. Closing this window with the red X button in the corner will
+cause your terminal to crash! If you do this by accident, simply kill your terminal and open a new one. To properly close the window, use:
+
+# Gui.close_board;;
+
+Note: Every time you close the Xmin window, you will have to repeat the "Testing" steps for the window to open properly again. 

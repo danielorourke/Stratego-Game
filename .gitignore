@@ -1,0 +1,13 @@
+#ocaml
+*.byte
+*.cmi
+*.cmo
+_build
+
+# general
+.DS_Store
+
+# file
+doc.public
+doc.private
+stratego.zip

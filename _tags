@@ -1,0 +1,2 @@
+<board.ml>: coverage
+true: package(ounit2), package(ANSITerminal)
